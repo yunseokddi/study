@@ -1,5 +1,5 @@
 class Subscriber(object):
-    def __index__(self, name):
+    def __init__(self, name):
         self.name = name
 
     def update(self, message):
@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     pub.register(astin)
     pub.register(james)
-    pub.register(james)
+    pub.register(jeff)
 
     pub.dispatch("it's lunch time")
     pub.unregister(jeff)
