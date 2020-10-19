@@ -1,20 +1,23 @@
-def merge(left, right):
-    if not left or right:
-        return left or right
+def merge_sort(seq):
+    if len(seq) < 2:
+        return seq
 
-    result = []
+    mid = len(seq) // 2
+    left, right = seq[:mid], seq[mid:]
+
+    if len(left) > 1:
+        left = merge_sort(left)
+
+    if len(right) > 1:
+        return merge_sort(right)
+
+    res = []
+
     while left and right:
         if left[-1] >= right[-1]:
-            result.append(left.pop())
-
+            res.append(left.pop())
         else:
-            result.append(right.pop())
+            res.append(right.pop())
 
-    result.reverse()
-    return (left or right) + result
-
-l1 = [1,2,3,4,5,6,7]
-l2 = [2,4,5,8]
-
-print(merge(l1,l2))
-
+    res.reverse()
+    return(left or right) + res
